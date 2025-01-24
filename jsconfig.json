@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS", // Thay đổi module thành "CommonJS"
+		"target": "ES6",
+		"checkJs": true, /* Typecheck .js files. */
+		"lib": [
+			"ES2022"
+		],
+		"baseUrl": "./",
+		"paths": {
+			"@/*": [
+				"*"
+			]
+		},
+		"moduleResolution": "node", // Đảm bảo tìm kiếm module theo kiểu node.js
+		"esModuleInterop": true, // Đảm bảo tương thích giữa CommonJS và ESModules
+		"allowSyntheticDefaultImports": true // Giúp chuyển đổi giữa CommonJS và ESModules
+	},
+	"exclude": [
+		"node_modules",
+		"eslint.config.cjs"
+	]
+}

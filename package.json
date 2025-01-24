@@ -1,0 +1,87 @@
+{
+	"publisher": "ntkhang03",
+	"name": "laravel-artisan-gui",
+	"displayName": "Laravel Artisan GUI",
+	"description": "A GUI for Laravel Artisan commands",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.87.0"
+	},
+	"author": "NTKhang",
+	"license": "MIT",
+	"categories": [
+		"Other"
+	],
+	"icon": "assets/icons/laravel.png",
+	"activationEvents": [],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ntkhang03/laravel-artisan-gui.git"
+	},
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "laravel-artisan-gui.showGUI",
+				"title": "Show Laravel Artisan GUI"
+			}
+		],
+		"viewsWelcome": [
+			{
+				"contents": "We don't see a Laravel project here. In order to use this extension, you need to open a Laravel project.\n[Open Folder](command:vscode.openFolder)",
+				"enablement": "laravelProjectLoaded == false",
+				"view": "laravel-artisan-gui.view",
+				"when": "laravelProjectLoaded == false"
+			},
+			{
+				"contents": "Click below to open the Laravel Artisan GUI\n[Open Laravel Artisan GUI](command:laravel-artisan-gui.showGUI)",
+				"enablement": "laravelProjectLoaded == true",
+				"view": "laravel-artisan-gui.view",
+				"when": "laravelProjectLoaded == true"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "activityBarGUI",
+					"title": "Laravel Artisan GUI",
+					"icon": "webview/icons/laravel.svg"
+				}
+			]
+		},
+		"views": {
+			"activityBarGUI": [
+				{
+					"id": "laravel-artisan-gui.view",
+					"name": "Laravel Artisan GUI"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Laravel Artisan GUI",
+			"properties": {
+				"laravel-artisan-gui.isDarkTheme": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable dark theme for the webview"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js",
+		"package": "vsce package"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.6",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.87.0",
+		"@vscode/test-cli": "^0.0.6",
+		"@vscode/test-electron": "^2.3.9",
+		"eslint": "^8.56.0",
+		"mocha": "^10.3.0",
+		"typescript": "^5.3.3"
+	}
+}
